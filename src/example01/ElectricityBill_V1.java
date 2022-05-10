@@ -9,7 +9,7 @@ public class ElectricityBill_V1 {
         System.out.println("=========================");
 
         Scanner scanner = new Scanner(System.in);
-        double answer = scanner.nextDouble();
+        double answer = scanner.nextDouble(); //입력 받고
         System.out.println(AddFunc(answer)); //계산 출력
     }
     public static double AddFunc(double a){
