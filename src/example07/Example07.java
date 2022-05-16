@@ -15,7 +15,7 @@ public class Example07 {
         for(int i =1;i<=num;i++){
             System.out.println(arr[i]);
         }
-        System.out.println("[안내]피보나치 수열 프로그램 .");
+        System.out.println("[안내]피보나치 수열 프로그램 종료.");
     }
     static int fib(int num){
         if(num<=1) return arr[num]= num;
