@@ -3,6 +3,7 @@ package example04;
 import java.util.Arrays;
 import java.util.Scanner;
 //굿굿
+//ㅎㅎ
 public class CC {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
