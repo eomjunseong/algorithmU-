@@ -1,39 +1,51 @@
 package practice;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Collections;
 
-import java.util.*;
-class Person implements  Comparable<Person>{
-    String name;
-    int age;
-    Person(String a, int b){
-        name =a ; age = b;
-    }
-    @Override
-    public int compareTo(Person o) {
-        return this.age-o.age;
-    }
+class Car implements Comparable<Car> {
+    protected int disp;    // 배기량
+
+    public Car(int d) { disp = d; }
+
     @Override
     public String toString() {
-        return name + " " +age;
+        return "cc: " + disp;
     }
-}
-class PersonCompartor implements  Comparator<Person>{
     @Override
-    public int compare(Person o1, Person o2) {
-        return o2.age-o1.age;
+    public int compareTo(Car o) {
+        return disp - o.disp;
     }
 }
 
-public class Test {
+class ECar extends Car {
+    int a;
+    private int battery;    // 배터리
+
+    public ECar(int d, int b) {
+        super(d);
+        battery = b;
+    }
+
+    @Override
+    public String toString() {
+        return "cc: " + disp + ", ba: " + battery;
+    }
+}
+
+class ECarSortCollections {
     public static void main(String[] args) {
-        TreeSet<Person> t = new TreeSet<>();
-        t.add(new Person("a1",33));
-        t.add(new Person("a2",23));
-        t.add(new Person("a3",53));
+        List<ECar> list = new ArrayList<>();
+        list.add(new ECar(1200, 99));
+        list.add(new ECar(3000, 55));
+        list.add(new ECar(1800, 87));
 
+        // 정렬
+        Collections.sort(list);
 
-        Iterator<Person>itr = t.iterator();
-        while(itr.hasNext()){
-            System.out.println(itr.next().toString());
-        }
+        // 출력
+        for(Iterator<ECar> itr = list.iterator(); itr.hasNext(); )
+            System.out.println(itr.next().toString() + '\t');
     }
 }

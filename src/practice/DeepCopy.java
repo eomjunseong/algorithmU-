@@ -1,6 +1,6 @@
 package practice;
 
-public class Main {
+public class DeepCopy {
     public static void main(String[] args) {
         Rectangle r = new Rectangle(1,1,5,5);
         Rectangle c ;
