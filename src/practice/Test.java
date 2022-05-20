@@ -1,20 +1,33 @@
 package practice;
-import java.util.List;
-import java.util.Arrays;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.function.Predicate;
-
-class RemoveIfDemo {
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+class ToyInfo{
+    String model;
+    int price;
+    ToyInfo(String a, int b){
+        model = a;
+        price =b;
+    }
+    int getPrice(){
+        return price;
+    }
+}
+class OptionalBase {
     public static void main(String[] args) {
-        List<Integer> ls1 = Arrays.asList(1, -2, 3, -4, 5);
-        ls1 = new ArrayList<>(ls1);
+        List<ToyInfo> ls = new ArrayList<>();
+        ls.add(new ToyInfo("a1",10));
+        ls.add(new ToyInfo("a2",5));
+        ls.add(new ToyInfo("a3",10));
+        ls.add(new ToyInfo("a4",11));
 
-        List<Double> ls2 = Arrays.asList(-1.1, 2.2, 3.3, -4.4, 5.5);
-        ls2 = new ArrayList<>(ls2);
-
-
-        ls2.removeIf(s->s.doubleValue()<0.0);
-        System.out.println(ls2);
+        int sum =ls.stream().filter(p->p.getPrice()<11)
+                .mapToInt(t->t.getPrice()).sum();
+        System.out.println(sum);
 
     }
 }
