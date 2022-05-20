@@ -18,6 +18,7 @@ public class Example07 {
         System.out.println("[안내]피보나치 수열 프로그램 종료.");
     }
     static int fib(int num){
+        if(arr[num]!=0) return arr[num];
         if(num<=1) return arr[num]= num;
         return arr[num] = fib(num-1)+fib(num-2);
     }
