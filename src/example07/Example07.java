@@ -1,4 +1,4 @@
-package example07;
+package example07; //good
 
 import java.util.Scanner;
 
