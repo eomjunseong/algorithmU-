@@ -4,14 +4,14 @@ import java.util.*;
 
 public class MyStorageV3 {
     public static void main(String[] args) {
-//        if(args.length!=0||args!=null){
-//            System.out.println("조회되지 않는 회원입니다. 관리자 권한으로 로그인해 주세요.");
-//            return;
-//        }
-//        else{
-//            System.out.printf("[System] %s 점장님 어서오세요.\n",args[0]);
-//            System.out.println("[System] 해당 프로그램의 기능입니다.");
-//        }
+        if(args==null||args.length==0){
+            System.out.println("조회되지 않는 회원입니다. 관리자 권한으로 로그인해 주세요.");
+            return;
+        }
+        else{
+            System.out.printf("[System] %s 점장님 어서오세요.\n",args[0]);
+            System.out.println("[System] 해당 프로그램의 기능입니다.");
+        }
 
         ERP erp = new ERP();
         erp.start(); //start
@@ -20,7 +20,6 @@ public class MyStorageV3 {
     }
 }
 class ERP {
-
     TreeMap<String,Integer> itemList = new TreeMap<>(); //이름은 리스트이나 맵으로 구현해벌임..
     Scanner scan = new Scanner(System.in);
     void start(){
