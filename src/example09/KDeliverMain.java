@@ -12,7 +12,7 @@ public class KDeliverMain {
 
 class Kiosk{
     Scanner scan = new Scanner(System.in);
-    Set<String> checkUniqueShopName = new HashSet<>();
+
     Set<Order> orderList = new HashSet<>(); // 주문 리스트
     Set<Shop> shopList = new HashSet<>(); // 가게리스트
     List<Feedback> feedbackList = new ArrayList<>(); // 단순 조회 용 -> list 로 저장
@@ -35,12 +35,15 @@ class Kiosk{
                 case "4": //후기 등록
                     makeFeedback();
                     break;
-                case "5": //종료
+                case "5": //가게별 메뉴 보기
+                    showMenu();
+                    break;
+                case "6": //종료
                     System.out.println("[안내] 이용해주셔서 감사합니다.");
                     break;
 
             }
-            if(selectMenu.equals("5")) break;
+            if(selectMenu.equals("6")) break;
         }
     }
 
@@ -54,7 +57,8 @@ class Kiosk{
                     "2) [고객님과 사장님용] 음식점 별점 조회하기\n" +
                     "3) [고객님용] 음식 주문하기\n" +
                     "4) [고객님용] 별점 등록하기\n" +
-                    "5) 프로그램 종료하기\n" +
+                    "5) [고객님과 사장님용] 메뉴 조회\n" +
+                    "6) 프로그램 종료하기\n" +
                     "-------------------------");
             selectMenu= scan.nextLine();
             if(selectMenu.equals("1")||selectMenu.equals("2")||selectMenu.equals("3")||selectMenu.equals("4")||selectMenu.equals("5")){
@@ -93,9 +97,6 @@ class Kiosk{
         else{
             System.out.println("이미 존재하는 매장입니다. 입력 정보를 확인해주세요.");
         }
-
-
-
     }
 
     //"2"
@@ -168,6 +169,19 @@ class Kiosk{
 
     }
 
+    //"5" 메뉴 보기
+    void showMenu(){ //Set임
+        int idx = 1 ;
+        for(Shop shop : shopList){
+            System.out.println("--("+idx+ ")------------------");
+            System.out.println("상호명 : "+shop.getShopName());
+            System.out.println("메뉴명 : "+shop.getFoodName());
+            System.out.println("가격 : "+shop.getPrice());
+            System.out.println("^^^^\n\n");
+            idx++;
+        }
+
+    }
 
     boolean checkNum(String str){
         if(str.length()==0) return false;
