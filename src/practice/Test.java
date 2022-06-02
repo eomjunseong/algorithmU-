@@ -1,36 +1,50 @@
 package practice;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 import java.util.stream.IntStream;
 
-class ReportCard {
-    private int kor;    // 국어 점수
-    private int eng;    // 영어 점수
-    private int math;    // 수학 점수
 
-    public ReportCard(int k, int e, int m) {
-        kor = k;
-        eng = e;
-        math = m;
+class Student {
+
+    private int kor;
+    private int eng;
+    private int math;
+
+    public Student(int kor, int eng, int math) {
+        this.kor = kor;
+        this.eng = eng;
+        this.math = math;
     }
-    public int getKor() { return kor; }
-    public int getEng() { return eng; }
-    public int getMath() { return math; }
+
+    public int getKor() {
+        return kor;
+    }
+
+    public int getEng() {
+        return eng;
+    }
+
+    public int getMath() {
+        return math;
+    }
+
 }
 
+ class Main {
 
-class GradeAverage {
     public static void main(String[] args) {
-        List<String> sl = Arrays.asList("Toy","Toy2","Toy2","Toy3");
+        List<Student> students = Arrays.asList(
+                new Student(80, 90, 75),
+                new Student(70, 100, 75),
+                new Student(85, 90, 85),
+                new Student(80, 100, 90)
+        );
 
-        Stream<String[]> stream = sl.stream().map(s -> s.split(""));//Stream<String[]>
-//        Stream<String> stringStream = stream.flatMap(s -> Arrays.stream(s));
-        Stream<String> stringStream = stream.flatMap(s -> Stream.of(s));
-        System.out.println(stringStream.count());
-
-
-
-//        stringStream.forEach(s-> System.out.println(s));
+        students.stream().flatMapToInt(student ->
+                        IntStream.of(student.getKor(), student.getEng(), student.getMath()))
+                .average()
+                .ifPresent(avg -> System.out.println(Math.round(avg * 10) / 10.0));
     }
+
 }
+//출처: https://mangkyu.tistory.com/115 [MangKyu's Diary:티스토리]
